@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class StateCensusAnalyser {
-    public static final String SAMPLE_CSV_FILE_PATH = "src/main/java/org/bridgelabz/StateCensuss.csv";
+    public static final String SAMPLE_CSV_FILE_PATH = "src/main/java/org/bridgelabz/StateCensus.csb";
 
     /*
     @desc: load data from csv file
