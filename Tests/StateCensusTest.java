@@ -3,6 +3,11 @@ import org.bridgelabz.StateCensusAnalyser;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.Arrays;
+
+import static junit.framework.TestCase.assertEquals;
+import static org.junit.Assert.assertArrayEquals;
+
 public class StateCensusTest {
     @Test
     public void happyTestSizeOfData() {
@@ -26,5 +31,13 @@ public class StateCensusTest {
     public void sadTestIncorrectCSVDelimiter() {
         final String SAMPLE_CSV_FILE_PATH = "src/main/java/org/bridgelabz/StateCensuss.csv";
         StateCensusAnalyser.loadData(SAMPLE_CSV_FILE_PATH);
+    }
+
+    @Test
+    public void sadTestIncorrectCSVHeader() {
+        final String SAMPLE_CSV_FILE_PATH = "src/main/java/org/bridgelabz/StateCensus.csv";
+        String[] expectedHeader = {"SrNo,StateName,TIN,StateCode"};
+        String[] realHeader = StateCensusAnalyser.loadHeader(SAMPLE_CSV_FILE_PATH);
+        assertArrayEquals(realHeader, expectedHeader);
     }
 }

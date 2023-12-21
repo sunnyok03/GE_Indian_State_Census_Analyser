@@ -27,6 +27,18 @@ public class StateCensusAnalyser {
         }
     }
 
+    public static String[] loadHeader(String SAMPLE_CSV_FILE_PATH) throws InvalidCSVFileException{
+        try (CSVReader reader = new CSVReader(new FileReader(SAMPLE_CSV_FILE_PATH))) {
+            List<String[]> data = reader.readAll().stream().limit(1).toList();
+            System.out.println(data.size());
+            return data.get(0);
+        } catch (FileNotFoundException e) {
+            throw new InvalidCSVFileException("Invalid file name.");
+        } catch (IOException | CsvException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     /*
     @desc: returns number of rows of the csv file
     @params:

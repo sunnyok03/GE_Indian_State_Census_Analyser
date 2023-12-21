@@ -1,5 +1,7 @@
 package org.bridgelabz;
 
+import java.util.Arrays;
+
 public class Main {
     public static void main(String[] args) throws InvalidCSVFileException {
         System.out.println("Welcome to Indian State Census Analyzer!!!");
@@ -8,5 +10,7 @@ public class Main {
 
         StateCensusAnalyser.loadData(SAMPLE_CSV_FILE_PATH);
         System.out.println("Size of data: " + StateCensusAnalyser.sizeOfData(SAMPLE_CSV_FILE_PATH));
+
+        System.out.println(Arrays.toString(StateCensusAnalyser.loadHeader(SAMPLE_CSV_FILE_PATH)));
     }
 }
