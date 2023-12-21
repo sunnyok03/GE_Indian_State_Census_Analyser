@@ -10,14 +10,13 @@ import java.util.Arrays;
 import java.util.List;
 
 public class StateCensusAnalyser {
-    public static final String SAMPLE_CSV_FILE_PATH = "src/main/java/org/bridgelabz/StateCensus.csb";
 
     /*
     @desc: load data from csv file
     @params:
     @return:
      */
-    public static void loadData() throws InvalidCSVFileException {
+    public static void loadData(String SAMPLE_CSV_FILE_PATH) throws InvalidCSVFileException {
         try (CSVReader reader = new CSVReader(new FileReader(SAMPLE_CSV_FILE_PATH))) {
             List<String[]> data = reader.readAll().stream().skip(1).toList();
             data.forEach(x -> System.out.println(Arrays.toString(x)));
@@ -33,7 +32,7 @@ public class StateCensusAnalyser {
     @params:
     @return: number of rows
      */
-    public static int sizeOfData() {
+    public static int sizeOfData(String SAMPLE_CSV_FILE_PATH) {
         try (CSVReader reader = new CSVReader(new FileReader(SAMPLE_CSV_FILE_PATH))) {
             List<String[]> data = reader.readAll().stream().skip(1).toList();
             return data.size();

@@ -6,11 +6,25 @@ import org.junit.Test;
 public class StateCensusTest {
     @Test
     public void happyTestSizeOfData() {
-        Assert.assertEquals(StateCensusAnalyser.sizeOfData(), 37);
+        final String SAMPLE_CSV_FILE_PATH = "src/main/java/org/bridgelabz/StateCensus.csv";
+        Assert.assertEquals(StateCensusAnalyser.sizeOfData(SAMPLE_CSV_FILE_PATH), 37);
     }
 
     @Test(expected = InvalidCSVFileException.class)
     public void sadTestIncorrectCSVFile() {
-        StateCensusAnalyser.loadData();
+        final String SAMPLE_CSV_FILE_PATH = "src/main/java/org/bridgelabz/StateCensuss.csv";
+        StateCensusAnalyser.loadData(SAMPLE_CSV_FILE_PATH);
+    }
+
+    @Test(expected = InvalidCSVFileException.class)
+    public void sadTestIncorrectCSVFileType() {
+        final String SAMPLE_CSV_FILE_PATH = "src/main/java/org/bridgelabz/StateCensus.csb";
+        StateCensusAnalyser.loadData(SAMPLE_CSV_FILE_PATH);
+    }
+
+    @Test(expected = InvalidCSVFileException.class)
+    public void sadTestIncorrectCSVDelimiter() {
+        final String SAMPLE_CSV_FILE_PATH = "src/main/java/org/bridgelabz/StateCensuss.csv";
+        StateCensusAnalyser.loadData(SAMPLE_CSV_FILE_PATH);
     }
 }
